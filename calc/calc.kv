@@ -1,0 +1,131 @@
+#:import utils kivy.utils
+<Button>
+    font_size: 15
+    border_radius: 30
+    color: utils.get_color_from_hex('#e3e5e5')
+    
+
+<DefaultButton@Button>
+    background_normal: ''
+    background_color: utils.get_color_from_hex('#18202a')
+<OperationButton@Button>
+    background_normal: ''
+    background_color: utils.get_color_from_hex('#e5e5e5')
+    color: utils.get_color_from_hex('#18202a')
+
+<MainGrid>
+    BoxLayout:
+        size: root.width, root.height
+        orientation:'vertical'
+        spacing: 0
+        padding: 0
+        BoxLayout:
+            orientation:'horizontal'
+            size_hint: (1, .12)
+            Label:
+                text:"Calculator"
+                height: 10
+                background_color: (54/255, 71/255, 79/255, 1)
+                font_size: 21
+                size: 1, .4
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+                padding: 10
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+        Label:
+            id: screen
+            text:""
+            font_size: 30
+            background_color: (54/255, 71/255, 79/255, 1)
+            size_hint_y: .4
+            text_size: self.size
+            halign: 'right'
+            valign: 'bottom'
+            padding: 10
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+        
+
+        GridLayout:
+            cols: 4
+            DefaultButton:
+                text: 'AC'
+                id: clear
+                on_press: root.clearScreen()
+            DefaultButton:
+                text: '('
+                on_press: root.enterSymbol('(')
+            DefaultButton:
+                text: ')'
+                on_press: root.enterSymbol(')')
+            OperationButton:
+                text: '÷'
+                on_press: root.enterSymbol('÷')
+            
+            DefaultButton:
+                text: '7'
+                on_press: root.enterSymbol('7')
+            DefaultButton:
+                text: '8'
+                on_press: root.enterSymbol('8')
+            DefaultButton:
+                text: '9'
+                on_press: root.enterSymbol('9')
+            OperationButton:
+                text: '×'
+                on_press: root.enterSymbol('×')
+            
+            DefaultButton:
+                text: '4'
+                on_press: root.enterSymbol('4')
+            DefaultButton:
+                text: '5'
+                on_press: root.enterSymbol('5')
+            DefaultButton:
+                text: '6'
+                on_press: root.enterSymbol('6')
+            OperationButton:
+                text: '-'
+                on_press: root.enterSymbol('-')
+            
+            DefaultButton:
+                text: '1'
+                on_press: root.enterSymbol('1')
+            DefaultButton:
+                text: '2'
+                on_press: root.enterSymbol('2')
+            DefaultButton:
+                text: '3'
+                on_press: root.enterSymbol('3')
+            OperationButton:
+                text: '+'
+                on_press: root.enterSymbol('+')
+            
+            DefaultButton:
+                text: '+/-'
+                on_press: root.changeSign()
+
+            DefaultButton:
+                text: '0'
+                on_press: root.enterSymbol('0')
+            DefaultButton:
+                text: '<'
+                on_press: root.removeOne()
+            Button:
+                text: '='
+                font_size: 20
+                background_normal: ''
+                background_color: utils.get_color_from_hex('#ff6b39')
+                on_press: root.takeResult()
+#  Попробовать другие отступы
