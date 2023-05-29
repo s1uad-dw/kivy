@@ -1,6 +1,6 @@
 #:import utils kivy.utils
 <Button>
-    font_size: 15
+    font_size: 25
     border_radius: 30
     color: utils.get_color_from_hex('#e3e5e5')
     
@@ -42,7 +42,7 @@
         Label:
             id: screen
             text:""
-            font_size: 30
+            font_size: 40
             background_color: (54/255, 71/255, 79/255, 1)
             size_hint_y: .4
             text_size: self.size
@@ -124,7 +124,6 @@
                 on_press: root.removeOne()
             Button:
                 text: '='
-                font_size: 20
                 background_normal: ''
                 background_color: utils.get_color_from_hex('#ff6b39')
                 on_press: root.takeResult()

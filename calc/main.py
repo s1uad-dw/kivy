@@ -18,16 +18,20 @@ class MainGrid(Widget):
         self.ids.screen.text=''
 
     def removeOne(self):
-        self.ids.screen.text=self.ids.screen.text.replace('Error', '')[:-1]
-
+        if self.ids.screen.text[:2]=='-(' and\
+                        self.ids.screen.text[-1:]==')':
+            self.ids.screen.text=self.ids.screen.text[2:-1]
+        else:
+            self.ids.screen.text=self.ids.screen.text.replace('Error', '')[:-1]
+            
     def enterSymbol(self, symbol):
         self.ids.screen.text = self.ids.screen.text.replace('Error', '') + symbol
 
     def changeSign(self):
         self.ids.screen.text = f'-({self.ids.screen.text})'
+
     def takeResult(self):
         try:
-            print(Window.size)
             if self.ids.screen.text!='':
                 self.ids.screen.text=str(eval(self.ids.\
                     screen.text.replace('÷', '/').replace('×', '*')))
